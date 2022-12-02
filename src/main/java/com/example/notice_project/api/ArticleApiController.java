@@ -1,9 +1,8 @@
 package com.example.notice_project.api;
 
-import com.example.notice_project.api.service.ArticleService;
+import com.example.notice_project.service.ArticleService;
 import com.example.notice_project.dto.ArticleForm;
 import com.example.notice_project.entity.Article;
-import com.example.notice_project.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

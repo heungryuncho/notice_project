@@ -1,4 +1,4 @@
-package com.example.notice_project.api.service;
+package com.example.notice_project.service;
 
 import com.example.notice_project.dto.ArticleForm;
 import com.example.notice_project.entity.Article;
