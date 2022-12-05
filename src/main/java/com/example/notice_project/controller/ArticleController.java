@@ -2,8 +2,10 @@ package com.example.notice_project.controller;
 
 import com.example.notice_project.dto.ArticleForm;
 
+import com.example.notice_project.dto.CommentDto;
 import com.example.notice_project.entity.Article;
 import com.example.notice_project.repository.ArticleRepository;
+import com.example.notice_project.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ public class ArticleController {
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 자동 연결!
     private ArticleRepository articleRepository;
     //자바라면 new 하면서 객체를 생성해줘야하는데 스프링 부트가 자체적으로 해줌
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/articles/new")
     public String newArticleForm() {
@@ -53,10 +57,11 @@ public class ArticleController {
 
         //1. id로 데이터를 가져온다.
         Article articleEntity = articleRepository.findById(id).orElse(null); // 나중에 Optional로 리팩토링하기
+        List<CommentDto> commentDtos = commentService.comments(id);
 
         //2. 가져온 데이터를 모델에 등록
         model.addAttribute("article", articleEntity);
-
+        model.addAttribute("commentDtos", commentDtos);
         //3. 보여줄 페이지를 설정
         return "articles/show";
     }
