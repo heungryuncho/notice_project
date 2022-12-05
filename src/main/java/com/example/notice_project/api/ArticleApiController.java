@@ -57,8 +57,6 @@ public class ArticleApiController {
         return (deleted != null) ?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-
-
     }
 
     // 트랜잭션 -> 롤백
